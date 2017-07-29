@@ -18,7 +18,7 @@
   "homepage": "https://github.com/cxli8722/liri-node-app#readme",
   "dependencies": {
     "node-spotify-api": "^1.0.6",
-    "omdb-api-client": "^2.0.1",
+    "required": "^1.0.0",
     "twitter": "^1.7.1"
   }
 }

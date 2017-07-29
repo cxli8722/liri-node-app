@@ -49,12 +49,12 @@ tweets.map(function(t){console.log(t.text)}) // loop through the tweets
  
 console.log("top ten tweets on cake: " +tweets.length)
 
-// for (var i=0; i <tweets.length; i++)
-// console.log(tweets[i].text)
+for (var i=0; i <tweets.length; i++)
+console.log(tweets[i].text)
 };
 
 
-
+//spotify begins here!
 
 var Spotify = require('node-spotify-api');
  
@@ -67,11 +67,11 @@ spotify
   .search({ type: 'track', query: 'I want it that way' })
   .then(function(data) {
 
-    for(var i = 0; i < data.tracks.items.length; i++){
-        var songInfo = data.tracks.items[i];
+  //   for(var i = 0; i < data.tracks.items.length; i++){
+        var songInfo = data.tracks.items[0];
   
    
-  }
+  // consolelog artist name, song name, and url. 
    console.log("Artist: " + songInfo.artists[0].name);
    console.log('Song Title: ' + songInfo.name)
     console.log("Preview URL: " + songInfo.preview_url);
@@ -79,3 +79,28 @@ spotify
   .catch(function(err) {
     console.log(err);
   });
+
+
+ // OMDB movie function 
+var request = require("request");
+var movie="star wars"
+
+  var omdbURL = 'http://www.omdbapi.com/?apikey=40e9cece&t=starwars&plot=short&tomatoes=true';
+
+  request(omdbURL, function (error, response, body){
+    if(!error && response.statusCode == 200){
+      var body = JSON.parse(body);
+
+
+      console.log("Movie Title: " + body.Title);
+      console.log("Year of Release: " + body.Year);
+      console.log("Actors: " + body.Actors);
+      console.log("IMDB Rating: " + body.imdbRating);
+      console.log("Rotten Tomatoes Rating: " + body.tomatoRating);
+      console.log("Country: " + body.Country);
+      console.log("Language: " + body.Language);
+      console.log("Plot: " + body.Plot);
+    
+     
+  }
+});
